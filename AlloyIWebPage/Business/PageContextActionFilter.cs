@@ -1,5 +1,4 @@
 using System.Web.Mvc;
-using AlloyIWebPage.Models.Pages;
 using AlloyIWebPage.Models.ViewModels;
 using EPiServer.Web.Routing;
 
@@ -26,7 +25,7 @@ namespace AlloyIWebPage.Business
         {
             var viewModel = filterContext.Controller.ViewData.Model;
 
-            var model = viewModel as IPageViewModel<SitePageData>;
+            var model = viewModel as IWebPage;
             if (model != null)
             {
                 var currentContentLink = filterContext.RequestContext.GetContentLink();

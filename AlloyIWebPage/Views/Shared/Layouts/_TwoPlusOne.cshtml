@@ -1,6 +1,9 @@
 @using AlloyIWebPage
-@model IPageViewModel<SitePageData>
-@{ Layout = "~/Views/Shared/Layouts/_Root.cshtml"; }
+@model IWebPage
+@{ 
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+    var isRelatedContent = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.IContentLoader>().Get<EPiServer.Core.IContent>(Model.ContentLink) as IHasRelatedContent;
+}
 
 @{Html.RenderPartial("Breadcrumbs");}
 
@@ -15,9 +18,9 @@
         {
             @RenderSection("RelatedContent")
        }
-        else if (Model.CurrentPage is IHasRelatedContent)
+        else if (isRelatedContent != null)
         {
-            @Html.PropertyFor(x => ((IHasRelatedContent)x.CurrentPage).RelatedContentArea, new { CssClass = "row", Tag = Global.ContentAreaTags.OneThirdWidth })
+            @Html.PropertyFor(x => isRelatedContent.RelatedContentArea, new { CssClass = "row", Tag = Global.ContentAreaTags.OneThirdWidth })
        }
     </div>
 </div>

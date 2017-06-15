@@ -1,14 +1,14 @@
-@using System.Web.Optimization
+﻿@using System.Web.Optimization
 @using EPiServer.Framework.Web.Mvc.Html
 @using AlloyIWebPage.Business
-@model IPageViewModel<SitePageData>
+@model IWebPage
 <!DOCTYPE html>
-<html lang="@Model.CurrentPage.LanguageBranch">
+<html lang="@Model.Language">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=10" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@Model.CurrentPage.MetaTitle</title>
+        <title>@Model.PageTitle</title>
         @Html.CanonicalLink()
         @Html.AlternateLinks()
         @Styles.Render("~/bundles/css")

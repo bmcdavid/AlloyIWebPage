@@ -1,8 +1,8 @@
-@model IPageViewModel<SitePageData>
+@model IWebPage
 
 @helper ItemTemplate(HtmlHelpers.MenuItem firstLevelItem) {
     <div class="accordion-heading">
-        <a href="@Url.ContentUrl(firstLevelItem.Page.PageLink)" class = "@(firstLevelItem.Page.ContentLink.CompareToIgnoreWorkID(Model.CurrentPage.ContentLink) ? "accordion-toggle active" : "accordion-toggle")" data-parent="#alloyDrop">
+        <a href="@Url.ContentUrl(firstLevelItem.Page.PageLink)" class = "@(firstLevelItem.Page.ContentLink.CompareToIgnoreWorkID(Model.ContentLink) ? "accordion-toggle active" : "accordion-toggle")" data-parent="#alloyDrop">
             @firstLevelItem.Page.PageName
             <i class="@(firstLevelItem.HasChildren.Value ? "icon-chevron-down right" : "right")"></i>
         </a>
